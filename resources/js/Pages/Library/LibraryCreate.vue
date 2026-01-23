@@ -29,7 +29,7 @@ const form = ref({
     grade_level: 7,
     competency: '',
     file_path: '',
-    file_path: '',
+  
 });
 
 const errors = ref<Record<string, string>>({});
