@@ -12,8 +12,9 @@ Route::get('/', function () {
         return redirect()->route('dashboard');
     }
 
-    // Updated to pages/Welcome to fix Vite manifest case-sensitivity error
-    return Inertia::render('pages/Welcome', [
+    // Changed from 'pages/Welcome' back to 'Welcome'
+    // This will resolve to resources/js/pages/Welcome.vue
+    return Inertia::render('Welcome', [
         'canRegister' => Features::enabled(Features::registration()),
     ]);
 })->name('home');
