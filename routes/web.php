@@ -12,7 +12,8 @@ Route::get('/', function () {
         return redirect()->route('dashboard');
     }
 
-    return Inertia::render('Welcome', [
+    // Updated to pages/Welcome to fix Vite manifest case-sensitivity error
+    return Inertia::render('pages/Welcome', [
         'canRegister' => Features::enabled(Features::registration()),
     ]);
 })->name('home');
@@ -45,8 +46,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/library', [LibraryController::class, 'index'])->name('library.index');
     Route::get('/library/{book}', [LibraryController::class, 'show'])->name('library.show');
 
-    // Borror Request
-
+    // Borrow Request
     Route::post('/library/{book}/borrow', [BorrowRequestController::class, 'store'])->name('library.borrow');
     Route::post('/borrow-requests/{borrowRequest}/approve', [BorrowRequestController::class, 'approve'])->name('borrow-requests.approve')->middleware('can:manage-borrows');
     Route::post('/borrow-requests/{borrowRequest}/reject', [BorrowRequestController::class, 'reject'])->name('borrow-requests.reject')->middleware('can:manage-borrows');
@@ -85,7 +85,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/learning-files/create', [App\Http\Controllers\LearningFileController::class, 'create'])->name('learning-files.create');
         Route::post('/learning-files', [App\Http\Controllers\LearningFileController::class, 'store'])->name('learning-files.store');
         Route::put('/learning-files/{learningFile}', [App\Http\Controllers\LearningFileController::class, 'update'])->name('learning-files.update');
-        Route::delete('/learning-files/{learningFile}', [App\Http\Controllers\LearningFileController::class, 'destroy'])->name('learning-files.destroy');
         Route::delete('/learning-files/{learningFile}', [App\Http\Controllers\LearningFileController::class, 'destroy'])->name('learning-files.destroy');
     });
 
