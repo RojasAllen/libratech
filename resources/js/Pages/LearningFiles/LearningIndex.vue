@@ -518,8 +518,8 @@ const submitEdit = () => {
                         <TableRow v-for="(file, index) in paginatedFiles" :key="file.id">
                             <TableCell class="font-medium text-muted-foreground">{{ (currentPage - 1) * itemsPerPage + index + 1 }}</TableCell>
                             <TableCell class="font-medium">
-                                <a :href="file.file_path" target="_blank" class="hover:underline text-blue-600 font-semibold">
-                                     {{ file.title }}
+                                <a :href="'/storage/' + file.file_path" target="_blank" class="hover:underline text-blue-600 font-semibold">
+                                    {{ file.title }}
                                 </a>
                             </TableCell>
                             <TableCell class="text-muted-foreground">{{ file.description || '-' }}</TableCell>
