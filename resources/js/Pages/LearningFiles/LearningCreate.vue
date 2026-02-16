@@ -11,7 +11,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/Select.vue';
+} from '@/components/ui/select/Select.vue';
 import { toast } from 'vue-sonner';
 
 const form = useForm({
